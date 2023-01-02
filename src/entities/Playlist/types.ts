@@ -1,0 +1,1 @@
+export type iPlaylistSendSongs = (songValue: string) => void
