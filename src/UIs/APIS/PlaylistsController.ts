@@ -1,5 +1,6 @@
 import express from "express";
 import { rmSync } from "fs";
+import cors from 'cors';
 import Spotify from "../../entities/Playlist/spotify";
 class PlaylistsController{
     app : express
@@ -9,6 +10,7 @@ class PlaylistsController{
     constructor(spotify: Spotify) {
         this.app = express();
         this.port = Number.parseInt(process.env.port ?? "3000");
+        this.app.use(cors())
 
         this.spotify = spotify;
         this.app.get('/playlists/:id', async (req, res) => {

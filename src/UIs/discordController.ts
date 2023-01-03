@@ -15,11 +15,19 @@ export function handlePlaylists(spotify : Spotify){
         if (firstMessage.type === MessageType.UserJoin) {
             return;
         }
-        const response = await spotify.getSongs(firstMessage.content)
-        response?.songs.forEach(element => {
-            firstMessage
-            .reply("!play " + element.name + " " + element.artists)
-            .then(() => console.log("respondi"))
+        let playlistId = ''
+        if (firstMessage.content.startsWith('!ff '))
+            playlistId = firstMessage.content.substring(4)
+        else
+            return;
+
+        const response = await spotify.getSongs(playlistId)
+        response?.songs.forEach( (element, index) => {
+            setTimeout(() => {
+                firstMessage
+                .reply("#p " + element.name + " " + element.artists)
+                .then(() => console.log("respondi"))
+            }, index*500);
         });
     })
     client.login(process.env.discordKey);
