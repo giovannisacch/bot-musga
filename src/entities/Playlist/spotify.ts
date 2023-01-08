@@ -22,7 +22,7 @@ class Spotify{
                 return null
             }
             let songs = data.items.map((item) => {
-                    return  new Music(item.track.name, item.track.artists?.map((artist) => artist.name).join(' '), item.track.duration_ms, item.track.album.images[1].url)   
+                    return  new Music(item.track.id, item.track.name, item.track.artists?.map((artist) => artist.name).join(' '), item.track.duration_ms, item.track.album.images[1].url)   
             })
             let artists = data.items.map((item) => {
                 return item.track.artists.map((artists) => artists.name)

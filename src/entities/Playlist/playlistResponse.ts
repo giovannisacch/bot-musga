@@ -19,11 +19,13 @@ export class Filter{
 }
 
 export class Music{
+    id : string
     name : string
     artists : string
     duration : number
     pictureUrl : string
-    constructor(name : string, artists : string, duration : number, pictureUrl : string) {
+    constructor(id: string, name : string, artists : string, duration : number, pictureUrl : string) {
+        this.id = id;
         this.name = name;
         this.artists = artists;
         this.duration = duration;
